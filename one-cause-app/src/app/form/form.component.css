@@ -1,0 +1,39 @@
+.full-width {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.shipping-card {
+  min-width: 400px;
+  max-width: 400px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.row {
+  flex: 1;
+}
+
+.input {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
