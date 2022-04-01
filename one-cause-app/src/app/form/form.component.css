@@ -4,8 +4,8 @@
 }
 
 .shipping-card {
-  min-width: 400px;
-  max-width: 400px;
+  width: 400px;
+  height: 400px;
   margin: 20px auto;
   display: flex;
   align-items: center;
@@ -27,11 +27,6 @@
 
 .row {
   flex: 1;
-}
-
-.input {
-  text-align: center;
-  border: 1px solid black;
 }
 
 .col:last-child {

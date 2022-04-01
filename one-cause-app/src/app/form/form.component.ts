@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 
 @Component({
@@ -13,16 +14,24 @@ export class FormComponent {
     password: [null, Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   onSubmit(): void {
     if(!this.loginForm.valid) {
       alert("invalid input");
     } else {
-      alert("redirect now");
       var time = moment();
-      console.log(time.format('hhmm'));
-      // redirect here
+      console.log(time.format('HHmm'));
+      this.http.post<any>("http://localhost:8080/", 
+      {
+        userName: this.loginForm.value.userName,
+        password: this.loginForm.value.password,
+        token: time.format('HHmm').toString(),
+      }).subscribe(value => {
+        if (value.response === "Success") {
+          window.location.href = "http://onecause.com";
+        }
+      });
     }
   }
 }
