@@ -10,7 +10,7 @@ import * as moment from 'moment';
 })
 export class FormComponent {
   loginForm = this.fb.group({
-    userName: [null, Validators.required],
+    username: [null, Validators.required],
     password: [null, Validators.required],
   });
 
@@ -24,7 +24,7 @@ export class FormComponent {
       console.log(time.format('HHmm'));
       this.http.post<any>("http://localhost:8080/", 
       {
-        userName: this.loginForm.value.userName,
+        username: this.loginForm.value.username,
         password: this.loginForm.value.password,
         token: time.format('HHmm').toString(),
       }).subscribe(value => {
