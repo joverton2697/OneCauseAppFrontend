@@ -18,18 +18,24 @@ export class FormComponent {
 
   onSubmit(): void {
     if(!this.loginForm.valid) {
-      alert("invalid input");
+      alert("Invalid input");
     } else {
       var time = moment();
       console.log(time.format('HHmm'));
       this.http.post<any>("http://localhost:8080/", 
+      {},
       {
-        username: this.loginForm.value.username,
-        password: this.loginForm.value.password,
-        token: time.format('HHmm').toString(),
-      }).subscribe(value => {
+        params: {
+          username: this.loginForm.value.username,
+          password: this.loginForm.value.password,
+          token: time.format('HHmm').toString(),
+        }
+      })
+      .subscribe(value => {
         if (value.response === "Success") {
           window.location.href = "http://onecause.com";
+        } else {
+          alert("Username or password are incorrect")
         }
       });
     }
